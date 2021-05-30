@@ -5,7 +5,7 @@ let port = process.env.PORT || 3000
 app.listen(port, () => console.log('listenning:', port))
 
 const User = require('./src/models/UserModal')
-
+const Item = require('./src/models/ItemModal')
 
 let { successFalse, successTrue } = require('./src/helper')
 

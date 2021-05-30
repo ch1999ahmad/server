@@ -14,6 +14,6 @@ const ItemSchema = new mongoose.Schema({
 
 
 
-const Modal = new mongoose.model('USER', ItemSchema)
+const Modal = new mongoose.model('ITEM', ItemSchema)
 
 module.exports = Modal
