@@ -20,13 +20,13 @@ app.post("/register", (req, res) => {
             success: true,
             message: 'User Created'
         })
-        res.send(res).statusCode(201)
+        // res.send(res).statusCode(201)
     }).catch((e) => {
         res.json({
             success: false,
             message: e.message
         })
-        res.send(res).statusCode(501)
+        // res.send(res).statusCode(501)
     })
 })
 app.post("/login", async (req, res) => {
@@ -36,16 +36,16 @@ app.post("/login", async (req, res) => {
 
         if (resp.length > 0 && resp[0].password === password) {
             res.json(successTrue('Operation Successfull.', resp[0]))
-            res.statusCode(200).send(res) 
+            // res.statusCode(200).send(res) 
         }
         else {
             res.json(successFalse('Email or Password is Invalid', error))
-            res.statusCode(400).send(res)
+            // res.statusCode(400).send(res)
           
         }
     }).catch((error) => {
         res.json(successFalse('Email or Password is Invalid', error))
-        res.statusCode(400).send(res)
+        // res.statusCode(400).send(res)
     })
 
 
@@ -56,10 +56,10 @@ app.patch("/update/:id", async (req, res) => {
     User.findByIdAndUpdate(id, req.body, { new: true }).then((resp) => {
 
         res.json(successTrue('Update Successfull.', resp))
-        res.statusCode(400).send(res)
+        // res.statusCode(400).send(res)
 
     }).catch((error) => {
         res.json(successFalse('An error occurred', error))
-        res.statusCode(500).send(res)
+        // res.statusCode(500).send(res)
     })
 })
