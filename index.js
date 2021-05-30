@@ -7,6 +7,7 @@ app.listen(port, () => console.log('listenning:', port))
 const User = require('./src/models/UserModal')
 const Item = require('./src/models/ItemModal')
 
+
 let { successFalse, successTrue } = require('./src/helper')
 
 app.use(express.static("public"));
@@ -58,6 +59,64 @@ app.patch("/update/:id", async (req, res) => {
         res.json(successTrue('Update Successfull.', resp))
         // res.statusCode(400).send(res)
 
+
+
+        
+    }).catch((error) => {
+        res.json(successFalse('An error occurred', error))
+        // res.statusCode(500).send(res)
+    })
+})
+
+
+app.post("/items/add", (req, res) => {
+    let item = new Item(req.body);
+    item.save().then(() => {
+        res.json({
+            success: true,
+            message: 'Item Created'
+        })
+        // res.send(res).statusCode(201)
+    }).catch((e) => {
+        res.json({
+            success: false,
+            message: e.message
+        })
+        // res.send(res).statusCode(501)
+    })
+})
+app.get("/users", async (req, res) => {
+
+    try {
+        let resp = await User.find({})
+        res.json(successTrue('Operation Successfull.', resp)) 
+        // res.send(res)
+ 
+    } catch (error) {
+        res.json(successFalse('An error occured while getting users', error)) 
+        // res.send(res)
+    }
+
+})
+app.get("/items", async (req, res) => {
+
+    try {
+        let resp = await Item.find({})
+        res.json(successTrue('Operation Successfull.', resp))
+        // res.send(res)
+ 
+    } catch (error) {
+        res.json(successFalse('An error occured while getting users', error))
+        // res.send(res)
+    }
+
+})
+app.put("/items/update/:id", async (req, res) => {
+    let id = req.params.id 
+    Item.findByIdAndUpdate(id, req.body, { new: true }).then((resp) => {
+        res.json(successTrue('Item Update Successfull.', resp))
+        // res.statusCode(400).send(res)
+      
     }).catch((error) => {
         res.json(successFalse('An error occurred', error))
         // res.statusCode(500).send(res)
