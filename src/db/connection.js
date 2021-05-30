@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 
 
 
-mongoose.connect('mongodb+srv://cluster0.faizy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority/Ahmadch',
+mongoose.connect('mongodb+srv://cluster0.faizy.mongodb.net/myFirstDatabase?retryWrites=true=majority/Ahmadch',
     {
 
         dbName: 'Cash&Carry',
