@@ -3,7 +3,7 @@ const app = express()
 require('./src/db/connection')
 let port = process.env.PORT || 3000
 app.listen(port, () => console.log('listenning:', port))
-
+const cors=require('cors')
 const User = require('./src/models/UserModal')
 const Item = require('./src/models/ItemModal')
 
