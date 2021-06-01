@@ -13,7 +13,9 @@ let { successFalse, successTrue } = require('./src/helper')
 app.use(express.static("public"));
 
 app.use(express.json({ limit: '1mb' }));
-
+import firebase from "firebase";
+import firebase from "firebase";
+app.use(cors())
 app.post("/register", (req, res) => {
     let user = new User(req.body);
     user.save().then(() => {
