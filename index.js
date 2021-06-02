@@ -3,8 +3,7 @@ const app = express()
 require('./src/db/connection')
 let port = process.env.PORT || 3000
 app.listen(port, () => console.log('listenning:', port))
-
-const cors=require('cors')
+const cors = require('cors')
 const User = require('./src/models/UserModal')
 const Item = require('./src/models/ItemModal')
 
@@ -14,9 +13,8 @@ let { successFalse, successTrue } = require('./src/helper')
 app.use(express.static("public"));
 
 app.use(express.json({ limit: '1mb' }));
-
-
 app.use(cors())
+
 
 app.post("/register", (req, res) => {
     let user = new User(req.body);
